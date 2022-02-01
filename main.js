@@ -8,12 +8,16 @@ let isPlaying = false;
 // PLAY
 function playSong() {
   isPlaying = true;
+  playBtn.classList.replace('fa-play', 'fa-pause');
+  playBtn.setAttribute('title', 'pause')
   music.play();
 }
 
 // PAUSE
 function pauseSong() {
   isPlaying = false;
+  playBtn.classList.replace('fa-pause', 'fa-play');
+  playBtn.setAttribute('title', 'play');
   music.pause();
 }
 
