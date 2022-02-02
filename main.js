@@ -64,12 +64,25 @@ function loadSong(song) {
 }
 
 // On load, select first song
-loadSong(songs[2])
+loadSong(songs[0])
 
-// Play Next Track
+// Play Next/Previous Track
 let trackNumber = 0;
 nextBtn.addEventListener('click', () => {
   trackNumber++;
+  // if(trackNumber >= songs.length) {
+  //   trackNumber = 0
+  // }
+  loadSong(songs[trackNumber]);
+  music.play();
+});
+
+prevBtn.addEventListener('click', () => {
+  trackNumber--;
+  // if(trackNumber < 0) {
+  //   trackNumber = songs.length - 1;
+  // }
+  
   loadSong(songs[trackNumber]);
   music.play();
 })
