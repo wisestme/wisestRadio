@@ -74,7 +74,7 @@ nextBtn.addEventListener('click', () => {
     trackNumber = 0
   }
   loadSong(songs[trackNumber]);
-  music.play();
+  playSong();
 });
 
 prevBtn.addEventListener('click', () => {
@@ -84,5 +84,5 @@ prevBtn.addEventListener('click', () => {
   }
   
   loadSong(songs[trackNumber]);
-  music.play();
+  playSong();
 })
