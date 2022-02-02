@@ -70,18 +70,18 @@ loadSong(songs[0])
 let trackNumber = 0;
 nextBtn.addEventListener('click', () => {
   trackNumber++;
-  // if(trackNumber >= songs.length) {
-  //   trackNumber = 0
-  // }
+  if(trackNumber >= songs.length) {
+    trackNumber = 0
+  }
   loadSong(songs[trackNumber]);
   music.play();
 });
 
 prevBtn.addEventListener('click', () => {
   trackNumber--;
-  // if(trackNumber < 0) {
-  //   trackNumber = songs.length - 1;
-  // }
+  if(trackNumber < 0) {
+    trackNumber = songs.length - 1;
+  }
   
   loadSong(songs[trackNumber]);
   music.play();
