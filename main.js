@@ -54,3 +54,22 @@ function pauseSong() {
 
 // Play or Pause event listener
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+
+// Ubdate DOM
+function loadSong(song) {
+  title.textContent = song.displayName;
+  artist.textContent = song.artist;
+  music.src = `music/${song.name}.m4a`;
+  image.src = `images/${song.name}.jpg`
+}
+
+// On load, select first song
+loadSong(songs[2])
+
+// Play Next Track
+let trackNumber = 0;
+nextBtn.addEventListener('click', () => {
+  trackNumber++;
+  loadSong(songs[trackNumber]);
+  music.play();
+})
