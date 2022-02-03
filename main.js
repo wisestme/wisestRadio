@@ -4,6 +4,7 @@ const artist = document.querySelector('#artist')
 const music = document.querySelector('audio');
 const musicProgress = document.getElementById('progress');
 const musicDuration = document.getElementById('duration');
+const musicCurrentTime = document.getElementById('current_time');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const playBtn = document.getElementById('play');
@@ -96,6 +97,8 @@ function getMusicProgress(e) {
     musicProgress.style.width = (currentTime / duration) * 100;
   }
   musicDuration.textContent = (duration / 60).toFixed(1);
+
+  musicCurrentTime.textContent = (currentTime/60).toFixed(2);
 }
 
 music.addEventListener('timeupdate', getMusicProgress)
