@@ -2,6 +2,7 @@ const image = document.querySelector('img');
 const title = document.querySelector('#title');
 const artist = document.querySelector('#artist')
 const music = document.querySelector('audio');
+const musicProgress = document.getElementById('progress');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
 const playBtn = document.getElementById('play');
@@ -86,3 +87,12 @@ prevBtn.addEventListener('click', () => {
   loadSong(songs[trackNumber]);
   playSong();
 })
+
+function getMusicProgress(e) {
+  const {currentTime, duration} = e.target;
+  if(isPlaying) {
+    musicProgress.style.width = (currentTime / duration) * 100;
+  }
+}
+
+music.addEventListener('timeupdate', getMusicProgress)
