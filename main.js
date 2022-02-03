@@ -71,14 +71,15 @@ loadSong(songs[0])
 
 // Play Next/Previous Track
 let trackNumber = 0;
-nextBtn.addEventListener('click', () => {
+nextBtn.addEventListener('click', playNextTrack);
+function playNextTrack() {
   trackNumber++;
   if(trackNumber >= songs.length) {
     trackNumber = 0
   }
   loadSong(songs[trackNumber]);
   playSong();
-});
+}
 
 prevBtn.addEventListener('click', () => {
   trackNumber--;
@@ -94,11 +95,20 @@ prevBtn.addEventListener('click', () => {
 function getMusicProgress(e) {
   const {currentTime, duration} = e.target;
   if(isPlaying) {
-    musicProgress.style.width = (currentTime / duration) * 100;
+    progressPercent = (currentTime / duration) * 100;
+    musicProgress.style.width = `${progressPercent}%`
   }
   musicDuration.textContent = (duration / 60).toFixed(1);
 
   musicCurrentTime.textContent = (currentTime/60).toFixed(2);
+
+  if(currentTime == duration) {
+    playNextTrack();
+  }
 }
 
 music.addEventListener('timeupdate', getMusicProgress)
+
+if(currentTime == duration) {
+  playNextTrack();
+}
