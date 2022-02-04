@@ -98,17 +98,31 @@ function getMusicProgress(e) {
     progressPercent = (currentTime / duration) * 100;
     musicProgress.style.width = `${progressPercent}%`
   }
-  musicDuration.textContent = (duration / 60).toFixed(1);
 
-  musicCurrentTime.textContent = (currentTime/60).toFixed(2);
+  // Calculate duration
+  const durationMinutes = Math.floor(duration / 60);
+  let durationSeconds = Math.floor(duration % 60);
+  if(durationSeconds < 10) {
+    durationSeconds = `0${durationSeconds}`;
+  }
+  // delay switching duration element to avoid NaN
+  if(durationSeconds) {
+    musicDuration.textContent = `${durationMinutes}:${durationSeconds}`;
+  }
+
+  // Calculate currentTime
+  const currentMinutes = Math.floor(currentTime / 60);
+  let currentSeconds = Math.floor(currentTime % 60);
+  if(currentSeconds < 10) {
+    currentSeconds = `0${currentSeconds}`;
+  }
+  musicCurrentTime.textContent = `${currentMinutes}:${currentSeconds}`;
+
+ 
 
   if(currentTime == duration) {
     playNextTrack();
   }
 }
 
-music.addEventListener('timeupdate', getMusicProgress)
-
-if(currentTime == duration) {
-  playNextTrack();
-}
+music.addEventListener('timeupdate', getMusicProgress);
