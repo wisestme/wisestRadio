@@ -48,6 +48,10 @@ body {
     border-radius: 4px;
 }
 
+.progress_container:hover {
+    cursor: pointer;
+}
+
 .progress {
     width: 0;
     height: 100%;
