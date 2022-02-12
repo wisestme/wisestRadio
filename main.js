@@ -93,7 +93,7 @@ prevBtn.addEventListener('click', () => {
 
 // Music progress
 function getMusicProgress(e) {
-  const {currentTime, duration} = e.target;
+  let {currentTime, duration} = e.target;
   if(isPlaying) {
     progressPercent = (currentTime / duration) * 100;
     musicProgress.style.width = `${progressPercent}%`
@@ -118,11 +118,19 @@ function getMusicProgress(e) {
   }
   musicCurrentTime.textContent = `${currentMinutes}:${currentSeconds}`;
 
- 
-
   if(currentTime == duration) {
     playNextTrack();
   }
 }
 
+// Set progress bar
+const progressContainer = document.querySelector('.progress_container');
+function setProgressBar(e) {
+  const width = this.clientWidth;
+  const clickX = e.clientX - 107;
+  const { duration } = music;
+  music.currentTime = (clickX / width) * duration
+}
+
 music.addEventListener('timeupdate', getMusicProgress);
+progressContainer.addEventListener('click', setProgressBar);
