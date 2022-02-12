@@ -117,10 +117,6 @@ function getMusicProgress(e) {
     currentSeconds = `0${currentSeconds}`;
   }
   musicCurrentTime.textContent = `${currentMinutes}:${currentSeconds}`;
-
-  if(currentTime == duration) {
-    playNextTrack();
-  }
 }
 
 // Set progress bar
@@ -134,3 +130,4 @@ function setProgressBar(e) {
 
 music.addEventListener('timeupdate', getMusicProgress);
 progressContainer.addEventListener('click', setProgressBar);
+music.addEventListener('ended', playNextTrack);
