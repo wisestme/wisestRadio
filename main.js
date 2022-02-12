@@ -130,4 +130,21 @@ function setProgressBar(e) {
 
 music.addEventListener('timeupdate', getMusicProgress);
 progressContainer.addEventListener('click', setProgressBar);
-music.addEventListener('ended', playNextTrack);
+music.addEventListener('ended', () => {
+  if(repeatButton.classList.contains('repeat_on')) {
+    music.loop = true;
+    music.play();
+  } else {
+    playNextTrack();
+  }
+});
+
+// repeat track
+const repeatButton = document.getElementById('repeat');
+
+function setRepeat(){
+  repeatButton.classList.toggle('repeat_on')
+}
+repeatButton.addEventListener('click', setRepeat);
+
+

@@ -94,6 +94,10 @@ body {
     top: 3px;
 }
 
+.repeat_on {
+    background-color: rgb(148, 75, 170);
+}
+
 /* Media query: iPhone vertical */
 @media screen and (max-width: 376px) {
     .player_container {
