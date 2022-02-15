@@ -123,7 +123,9 @@ function getMusicProgress(e) {
 const progressContainer = document.querySelector('.progress_container');
 function setProgressBar(e) {
   const width = this.clientWidth;
-  const clickX = e.clientX - 107;
+  const clickX = e.offsetX;
+  console.log(clickX)
+  console.log(width);
   const { duration } = music;
   music.currentTime = (clickX / width) * duration
 }
