@@ -67,27 +67,16 @@ function loadSong(song) {
   image.src = `images/${song.name}.jpg`;
 
   // LYRICS
-const musicLyrics = `lyrics/${song.displayName}.txt`;
+const musicLyrics = `lyrics/${song.displayName}`;
 console.log(musicLyrics)
-function readTextFile(musicLyrics)
-{
-    var rawFile = new XMLHttpRequest();
-    rawFile.open("GET", musicLyrics, false);
-    rawFile.onreadystatechange = function ()
-    {
-        if(rawFile.readyState === 4)
-        {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
-                var allText = rawFile.responseText;
-                alert(allText);
-                lyrics.textContent = allText;
-            }
-        }
-    }
-    rawFile.send(null);
+const logFileText = async musicLyrics => {
+  const response = await fetch(musicLyrics)
+  const text = await response.text()
+  console.log(text)
+  lyrics.textContent = text;
 }
-readTextFile();
+
+logFileText(`lyrics/${song.displayName}.txt`)
 }
 
 // On load, select first song
