@@ -132,6 +132,7 @@ function setProgressBar(e) {
 
 music.addEventListener('timeupdate', getMusicProgress);
 progressContainer.addEventListener('click', setProgressBar);
+music.addEventListener('ended', playNextTrack);
 
 // repeat track
 const repeatButton = document.getElementById('repeat');
