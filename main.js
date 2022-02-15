@@ -3,6 +3,8 @@ const title = document.querySelector('#title');
 const artist = document.querySelector('#artist')
 const music = document.querySelector('audio');
 const lyrics = document.querySelector('.lyrics');
+const lyricsContainer = document.querySelector('.lyrics_container');
+const imageContainer = document.querySelector('.img_container');
 const musicProgress = document.getElementById('progress');
 const musicDuration = document.getElementById('duration');
 const musicCurrentTime = document.getElementById('current_time');
@@ -155,5 +157,13 @@ function setRepeat(){
   music.toggleAttribute('loop');
 }
 repeatButton.addEventListener('click', setRepeat);
+
+// show lyrics
+const lyricsButton = document.getElementById('lyrics');
+
+lyricsButton.addEventListener('click', () => {
+  lyricsContainer.classList.toggle('hide');
+  imageContainer.classList.toggle('hide');
+})
 
 
