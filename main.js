@@ -2,6 +2,7 @@ const image = document.querySelector('img');
 const title = document.querySelector('#title');
 const artist = document.querySelector('#artist')
 const music = document.querySelector('audio');
+const lyrics = document.querySelector('.lyrics');
 const musicProgress = document.getElementById('progress');
 const musicDuration = document.getElementById('duration');
 const musicCurrentTime = document.getElementById('current_time');
@@ -63,7 +64,30 @@ function loadSong(song) {
   title.textContent = song.displayName;
   artist.textContent = song.artist;
   music.src = `music/${song.name}.m4a`;
-  image.src = `images/${song.name}.jpg`
+  image.src = `images/${song.name}.jpg`;
+
+  // LYRICS
+const musicLyrics = `lyrics/${song.displayName}.txt`;
+console.log(musicLyrics)
+function readTextFile(musicLyrics)
+{
+    var rawFile = new XMLHttpRequest();
+    rawFile.open("GET", musicLyrics, false);
+    rawFile.onreadystatechange = function ()
+    {
+        if(rawFile.readyState === 4)
+        {
+            if(rawFile.status === 200 || rawFile.status == 0)
+            {
+                var allText = rawFile.responseText;
+                alert(allText);
+                lyrics.textContent = allText;
+            }
+        }
+    }
+    rawFile.send(null);
+}
+readTextFile();
 }
 
 // On load, select first song

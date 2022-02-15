@@ -98,6 +98,11 @@ body {
     background-color: rgb(148, 75, 170);
 }
 
+/* lyrics */
+.hide {
+    display: none;
+}
+
 /* Media query: iPhone vertical */
 @media screen and (max-width: 376px) {
     .player_container {
