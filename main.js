@@ -164,6 +164,12 @@ const lyricsButton = document.getElementById('lyrics');
 lyricsButton.addEventListener('click', () => {
   lyricsContainer.classList.toggle('hide');
   imageContainer.classList.toggle('hide');
+  if(lyricsButton.innerText == 'Lyrics') {
+  lyricsButton.innerText = 'Album art';
+  }
+  else {
+    lyricsButton.innerText = 'Lyrics';
+  }
 })
 
 
